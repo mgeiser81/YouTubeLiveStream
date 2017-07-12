@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <title>StreamLabsYouTube</title>
@@ -7,8 +8,66 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 </head>
+
 <body>
   <app-root>Loading...</app-root>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+  var GoogleAuth;
+  var GoogleLoaded = false;
+  var GoogleSignedIn = false;
+  var GoogleIsFetching = false;
+  var SCOPE = 'https://www.googleapis.com/auth/youtube.force-ssl';
+  function handleClientLoad() {
+    gapi.load('client:auth2', initClient);
+  }
+
+  function initClient() {
+    gapi.client.init({
+        'apiKey': 'N-Uzf3XHLbxwFjZfDANcCbhJ',
+        'clientId': '629481692980-fjno58pvud1u02kr23761qgfrgpu7dh3.apps.googleusercontent.com',
+        'scope': SCOPE
+    }).then(function () {
+      GoogleLoaded = true;
+      GoogleAuth = gapi.auth2.getAuthInstance();
+      GoogleAuth.isSignedIn.listen(updateSigninStatus);
+      setSigninStatus();
+    });
+  }
+
+  function handleAuthClick() {
+    if (GoogleAuth.isSignedIn.get()) {
+      GoogleAuth.signOut();
+    } else {
+      GoogleAuth.signIn();
+    }
+  }
+
+  function revokeAccess() {
+    GoogleAuth.disconnect();
+  }
+
+  function setSigninStatus(isSignedIn) {
+    var user = GoogleAuth.currentUser.get();
+    var isAuthorized = user.hasGrantedScopes(SCOPE);
+    if (isAuthorized) {
+      GoogleSignedIn = true;
+    } else {
+      GoogleSignedIn = false;
+    }
+  }
+
+  function updateSigninStatus(isSignedIn) {
+    setSigninStatus();
+  }
+</script>
+
+<script async defer src="https://apis.google.com/js/api.js" 
+      onload="this.onload=function(){};handleClientLoad()" 
+      onreadystatechange="if (this.readyState === 'complete') this.onload()"></script>
 </body>
 </html>

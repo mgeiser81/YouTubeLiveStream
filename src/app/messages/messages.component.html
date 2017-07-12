@@ -1,0 +1,65 @@
+<div id="wrapper">
+  <div id="page-wrapper">
+    <div class="container-fluid">
+      <div class="row b-b">
+        <div class="col-xs-8">
+          <h4 class="page-title">Chat Labs</h4> 
+        </div>
+        <div class="col-xs-4">
+          <div class="logout">
+            [ <a (click)="logout()">Logout</a> ]
+          </div>
+        </div>
+      </div>
+
+      <div class="row spacing">
+        <div class="col-sm-12">
+          <button class="btn btn-danger" (click)="backToStreams()">Back to Streams</button>
+        </div>
+      </div>
+
+      <div class="row chat-main-box">
+        <div class="chat-left-side b-r">
+          <div class="chat-left-inner">
+            <div class="scroll-div">
+              <ul>
+                <li *ngFor="let user of users | async">
+                  <a class="active" (click)="viewProfile(user)">
+                    <img [src]="user.image" />
+                    <span>{{user.name}}</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="chat-right-side">
+          <div class="chat-main-header">
+            <div class="p-20 b-b">
+              <h3>Chat Messages</h3>
+            </div>
+          </div>
+          <div class="chat-box">
+            <div class="scroll-div">
+              <ul id="scroll" [scrollTop]="scrollTop">
+                <li *ngFor="let message of messages | async">
+                  <div class="chat-image">
+                    <img [src]="message.authorImage" />
+                  </div>
+                  <div class="chat-body">
+                    <div class="chat-text">
+                      <h4>{{message.authorName}}</h4>
+                      <p>{{message.text}}</p>
+                      <b>{{ message.dateAdded | amDateFormat:'MMM D hh:mmA'}}</b>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

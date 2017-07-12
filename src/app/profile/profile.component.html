@@ -1,0 +1,55 @@
+<div id="wrapper">
+  <div id="page-wrapper">
+    <div class="container-fluid">
+      <div class="row b-b">
+        <div class="col-xs-8">
+          <h4 class="page-title">Chat Labs - Profile</h4>
+        </div>
+        <div class="col-xs-4">
+          <div class="logout">
+            [ <a (click)="logout()">Logout</a> ]
+          </div>
+        </div>
+      </div>
+
+      <div class="row spacing">
+        <div class="col-sm-12">
+          <button class="btn btn-danger" (click)="backToMessages()">Back to Chat</button> &nbsp;
+          <button class="btn btn-danger" (click)="backToStreams()">Back to Stream List</button>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="white-box">
+            <div class="user-bg">
+              <div class="overlay-box">
+                <div class="user-content">
+                  <img [src]="profile?.image" class="thumb-lg img-circle" alt="img" />
+                  <h4 class="text-white">{{profile?.name}}</h4>
+                  <h5 class="text-white">{{profile?.channelUrl}}</h5>
+                </div>
+              </div>
+            </div>
+            <div class="user-btm-box">
+              <div class="col-sm-12 text-center">
+                <p class="text-danger"><i class="fa fa-comments"></i></p>
+                <h1>{{messages?.length || 0}}</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="white-box">
+            <div *ngFor="let message of messages" class="row b-b">
+              <div class="m-l-40">
+                <span class="sl-date">Sent {{ message?.dateAdded | amDateFormat:'MMM D hh:mmA'}}</span>
+                <p>{{message?.text}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,69 @@
+.white-box {
+    background: #353c48;
+    padding: 25px;
+    margin-bottom: 15px;
+}
+
+.text-danger {
+    color: #f75b36;
+}
+
+.user-bg {
+    margin: -25px;
+    height: 230px;
+    overflow: hidden;
+    position: relative;
+}
+
+.user-bg .overlay-box {
+    background: #2c5ca9;
+    opacity: .9;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    text-align: center;
+}
+
+.user-bg .overlay-box .user-content {
+    padding: 15px;
+    margin-top: 30px;
+}
+
+.thumb-lg {
+    height: 88px;
+    width: 88px;
+}
+
+.img-circle {
+    border-radius: 50%;
+}
+
+img {
+    vertical-align: middle;
+}
+
+img {
+    border: 0;
+}
+
+.user-btm-box {
+    padding: 40px 0 10px;
+    clear: both;
+    overflow: hidden;
+
+    h1 {
+        line-height: 48px;
+        font-size: 36px;
+    }
+}
+
+.sl-date {
+    font-size: 10px;
+    color: #98a6ad;
+}
+
+.m-l-40 {
+    margin-left: 40px!important;
+}

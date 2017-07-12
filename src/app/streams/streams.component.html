@@ -1,0 +1,41 @@
+<div id="wrapper">
+  <div id="page-wrapper">
+    <div class="container-fluid">
+      <div class="row b-b">
+        <div class="col-xs-8">
+          <h4 class="page-title">YouTube Streams</h4> 
+        </div>
+        <div class="col-xs-4">
+          <div class="logout">
+            [ <a (click)="logout()">Logout</a> ]
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="white-box">
+            <h3 class="box-title">Streams</h3>
+            <p class="text-muted">Click on a row to view <code>stream chat messages</code></p>
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Title</th>
+                    <th>Recording Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style="cursor: pointer;" *ngFor="let s of streams" (click)="joinChat(s)">
+                    <td>{{s.title}}</td>
+                    <td><span class="label label-danger">{{s.recordingStatus}}</span> </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
